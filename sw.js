@@ -3,9 +3,10 @@ var urlsToCache = [
     "/",
     "/main.css",
     "/main.js",
-    "//code.jquery.com/jquery-3.3.1.min.js"
+    "http://code.jquery.com/jquery-3.3.1.min.js"
 ];
 
+// SWスクリプト自体がインストールされるときに走るコールバックを定義する
 self.addEventListener("install", function(event) {
     // インストール処理
     event.waitUntil(
