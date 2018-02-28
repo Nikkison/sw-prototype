@@ -1,8 +1,8 @@
 var CACHE_NAME = "my-site-cache-v1";
 var urlsToCache = [
     "/",
-    "/main.css",
-    "/main.js",
+    "/css/main.css",
+    "/js/main.js",
     "http://code.jquery.com/jquery-3.3.1.min.js"
 ];
 
