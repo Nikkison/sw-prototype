@@ -3,7 +3,7 @@ var urlsToCache = [
     "/",
     "/css/main.css",
     "/js/main.js",
-    "http://code.jquery.com/jquery-3.3.1.min.js"
+    "https://code.jquery.com/jquery-3.3.1.min.js"
 ];
 
 // SWスクリプト自体がインストールされるときに走るコールバックを定義する
