@@ -1,5 +1,4 @@
 if ("serviceWorker" in navigator) {
-    // hog
     navigator.serviceWorker
         .register("sw.js")
         .then(function(registration) {

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>特定ページにだけ有効なServiceWorkerを設定するサンプル</title>
+    <link rel="stylesheet" href="/register/main.css">
+</head>
+<script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/register/specific/sw.js', { scope: '/register/specific/' })
+            .then(function (registration) {
+                // 登録成功
+                console.log('特定URLへのSW登録成功：', registration.scope);
+            })
+            .catch(function (err) {
+                // 登録失敗 :(
+                console.log('特定URLへのSW登録失敗：', err);
+            });
+        console.info('isReady?:', navigator.serviceWorker.ready);
+        console.info('isControle?:', navigator.serviceWorker.controller);
+    }
+</script>
+
+<body>
+    <p>特定スコープにのみ有効なSW登録の試行ページ</p>
+    <p>1. /register/ では
+        <em>{ scope: '/register/specific/' }</em>への登録処理しか行わない</p>
+    <p>1.1. リロードして見ても現在のページがswのコントロール下にないのがわかる</p>
+    <p>1.2. ただし、インストールは登録処理が行われたこのページで行われる</p>
+    <p>2.
+        <a href="/register/specific/">/register/specific/</a> 以下にアクセスした時、fetchイベントがswのコントロール下にあるのがわかる</p>
+    <p>また/register/main.cssのキャッシュはこのページで作成されているが、このページのmain.cssのリクエストはネットワーク越しで実行される</p>
+</body>
+
+</html>

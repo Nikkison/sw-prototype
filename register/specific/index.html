@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>特定ページにだけ有効なServiceWorkerを設定するサンプル</title>
+    <link rel="stylesheet" href="/register/main.css">
+</head>
+<script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+        //     navigator.serviceWorker
+        //         .register('/register/specific/sw.js', { scope: '/register/specific/' })
+        //         .then(function (registration) {
+        //             // 登録成功
+        //             console.log('特定URLへのSW登録成功：', registration.scope);
+        //         })
+        //         .catch(function (err) {
+        //             // 登録失敗 :(
+        //             console.log('特定URLへのSW登録失敗：', err);
+        //         });
+        console.info('isReady?:', navigator.serviceWorker.ready);
+        console.info('isControle?:', navigator.serviceWorker.controller);
+    }
+</script>
+
+<body>
+    <p>特定スコープにのみ有効なSW登録の試行ページ</p>
+    <p>3. /register/specific/ では
+        <em>{ scope: '/register/specific/' }</em>のスコープなのでswが有効である</p>
+    <p>3.1. 現在のページがswのコントロール下にあるのがわかる</p>
+    <p>4.
+        <a href="/register/main.css">/register/main.css</a> はキャッシュであるため、ネットワークは参照しない</p>
+</body>
+
+</html>
